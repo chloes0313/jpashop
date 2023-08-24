@@ -9,7 +9,7 @@ import java.util.PrimitiveIterator;
 
 @Entity
 @Data
-public class Category {
+public class Category extends BaseEntity {
     @Id @GeneratedValue
     @Column(name = "CATEGORY_ID")
     private Long id;
@@ -23,11 +23,11 @@ public class Category {
     )
     private List<Item> items = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PARENT_ID")
     private Category parent;
 
-    @OneToMany(mappedBy = "parent")
+    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     private List<Category> child;
 
 }
