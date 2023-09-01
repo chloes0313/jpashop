@@ -28,7 +28,6 @@ public class JpaMain {
 
             Member member = new Member();
             member.setName("chloe");
-            member.setCity("Yongin");
 
 
             Order order = new Order();
@@ -36,7 +35,6 @@ public class JpaMain {
             order.setStatus(OrderStatus.ORDER);
 
             Delivery delivery = new Delivery();
-            delivery.setCity("Seoul");
             delivery.setStatus(DeliveryStatus.PENDING);
             //persist X
 

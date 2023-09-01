@@ -1,11 +1,13 @@
 package jpabook.jpashop.domain;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
-@Entity
 @Data
+@EqualsAndHashCode(callSuper = false)
+@Entity
 public class Delivery extends BaseEntity {
     @Id @GeneratedValue
     @Column(name= "DELIVERY_ID")
@@ -14,11 +16,8 @@ public class Delivery extends BaseEntity {
     @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
     private Order order;
 
-    private String city;
-
-    private String street;
-
-    private String zipcode;
+    @Embedded
+    private Address address;
 
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
